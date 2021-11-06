@@ -4,7 +4,7 @@ const { readdir, rm, mkdir, stat, copyFile, readFile } = require('fs/promises');
 const stylesSrc = path.join(__dirname, 'styles');
 const projectStylesSrc = path.join(__dirname, 'project-dist', 'style.css');
 const assetsSrc = path.join(__dirname, 'assets');
-const projectAssetsSrc = path.join(__dirname, 'project-dist');
+const projectAssetsSrc = path.join(__dirname, 'project-dist', 'assets');
 
 const copyAssets = async (folderName, folderCopyName) => {
     await rm(folderCopyName, { recursive: true, force: true });
