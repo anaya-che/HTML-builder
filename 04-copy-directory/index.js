@@ -9,8 +9,8 @@ const copyDir = async (folderName, folderCopyName) => {
     const files = await fs.readdir(folderName);
     for (const file of files) {
         let fileParse = await fs.stat(path.resolve(folderName, file));
-        if (fileParse.isDirectory()) await copyDir(`${folderName}\\${file}`, `${folderCopyName}\\${file}`)
-        if (fileParse.isFile()) await fs.copyFile(`${folderName}\\${file}`, `${folderCopyName}\\${file}`);
+        if (fileParse.isDirectory()) await copyDir(path.join(folderName, file), path.join(folderCopyName, file));
+        if (fileParse.isFile()) await fs.copyFile(path.join(folderName, file), path.join(folderCopyName, file));
     }
 }
 

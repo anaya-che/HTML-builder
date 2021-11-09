@@ -12,8 +12,8 @@ const copyAssets = async (folderName, folderCopyName) => {
     const files = await readdir(folderName);
     for (const file of files) {
         let fileParse = await stat(path.resolve(folderName, file));
-        if (fileParse.isDirectory()) await copyAssets(`${folderName}\\${file}`, `${folderCopyName}\\${file}`)
-        if (fileParse.isFile()) await copyFile(`${folderName}\\${file}`, `${folderCopyName}\\${file}`);
+        if (fileParse.isDirectory()) await copyAssets(path.join(folderName, file), path.join(folderCopyName, file))
+        if (fileParse.isFile()) await copyFile(path.join(folderName, file), path.join(folderCopyName, file));
     }
 }
 
