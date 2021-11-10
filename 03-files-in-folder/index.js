@@ -8,7 +8,7 @@ const getFiles = async () => {
         let fileExt = path.extname(file);
         let fileName = path.basename(file, fileExt);
         let fileParse = await fs.stat(path.resolve(folder, file))
-        if(fileParse.isFile()) console.log(`${fileName} - ${fileExt} - ${fileParse.size/1024}kb`);
+        if(fileParse.isFile()) console.log(`${fileName} - ${fileExt.slice(1)} - ${fileParse.size/1024}kb`);
     }
 }
 
