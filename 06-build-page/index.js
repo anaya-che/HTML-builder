@@ -59,9 +59,9 @@ const copyHTML = async () => {
             let fileName = path.basename(file, fileExt);
             let newPath = path.join(componentsSrc, file);
             if (fileExt === '.html') {
+                const pattern = new RegExp(`{{${fileName}}}`, 'g');
                 content = await readFile(newPath,'utf8');
-                templateContent = templateContent.replace(`{{${fileName}}}`,content)
-                
+                templateContent = templateContent.replace(pattern, content);
             }
         }
         createPage(templateContent);
